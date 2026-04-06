@@ -1,6 +1,7 @@
-//Começaremos com a tarefa de criar um novo objeto na lista, faremos o DOM separado da lógica.
+let tasks = []
+//Dentro do array tasks irei criar os objetos com local storage mais tarde(lista)
 
-//DOM
+
 const inputTxtTask = document.getElementById("inputTxtTask");
 const taskButton = document.getElementById("taskButton");
 const taskOrderedList = document.getElementById("taskList");
@@ -26,8 +27,16 @@ taskButton.addEventListener("click", () => {
   if (inputTxtTask.value.trim() != "") {
     const task = createTaskElement(inputTxtTask.value);
     taskOrderedList.appendChild(task);
-    inputTxtTask.placeholder = 'Digite uma tarefa'
+    inputTxtTask.value = "";
+    inputTxtTask.placeholder = "Digite uma tarefa";
   } else {
     inputTxtTask.placeholder = "Digite uma tarefa valida";
+  }
+});
+
+inputTxtTask.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    taskButton.click();
   }
 });
