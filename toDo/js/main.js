@@ -1,7 +1,6 @@
-let tasks = []
-//Dentro do array tasks irei criar os objetos com local storage mais tarde(lista)
+let tasks = [{ id: 1, text: "Estudar JS", done: false }];
 
-
+//DOM
 const inputTxtTask = document.getElementById("inputTxtTask");
 const taskButton = document.getElementById("taskButton");
 const taskOrderedList = document.getElementById("taskList");
