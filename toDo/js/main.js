@@ -1,5 +1,5 @@
 let tasks = [];
-let idCounter = 1;
+let idCounter = 0;
 
 //DOM
 const inputTxtTask = document.getElementById("inputTxtTask");
@@ -11,10 +11,18 @@ function createTaskElement(task) {
   const span = document.createElement("span");
   const checkButton = document.createElement("button");
   checkButton.textContent = "✅";
+  checkButton.addEventListener("click", () => {
+    span.classList.toggle("feito");
+    task.done = !task.done;
+  });
   const eraseButton = document.createElement("button");
-  eraseButton.textContent = "🗑️";
+  eraseButton.textContent = "❌";
+  eraseButton.addEventListener("click", () => {
+    tasks = tasks.filter((t) => t.id !== task.id);
+    li.remove();
+  });
 
-  span.innerText = text;
+  span.innerText = task.text;
   li.appendChild(span);
   li.appendChild(checkButton);
   li.appendChild(eraseButton);
@@ -25,21 +33,14 @@ function createTaskElement(task) {
 //LÓGICA
 taskButton.addEventListener("click", () => {
   if (inputTxtTask.value.trim() != "") {
-    //AO CLICAR NO BOTÃO CRIA UM OBJETO
     const task = {
       id: idCounter++,
       text: inputTxtTask.value,
       done: false,
     };
-    //COLOCA ESSE OBJETO DENTRO DO ARRAY TASK
     tasks.push(task);
-    console.log(tasks);
-
-    //CRIA A VARIAVEL taskElement E COLOCA TUDO ISSO DENTRO DO OL
     const taskElement = createTaskElement(task);
     taskOrderedList.appendChild(taskElement);
-
-    //Zera o input
     inputTxtTask.value = "";
   } else {
     inputTxtTask.placeholder = "Digite uma tarefa valida";
