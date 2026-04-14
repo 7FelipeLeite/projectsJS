@@ -54,3 +54,5 @@ inputTxtTask.addEventListener("keydown", (event) => {
     taskButton.click();
   }
 });
+
+SÓ UM TESTE
