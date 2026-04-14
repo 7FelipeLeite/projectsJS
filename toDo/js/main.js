@@ -53,6 +53,4 @@ inputTxtTask.addEventListener("keydown", (event) => {
     event.preventDefault();
     taskButton.click();
   }
-});
-
-SÓ UM TESTE
+}); 
